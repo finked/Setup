@@ -12,8 +12,11 @@ Plug 'Shougo/neosnippet'
 " Package for easy commenting and uncommenting
 Plug 'scrooloose/nerdcommenter' 
 
-" Go Language packages"
+" Go Language packages
 Plug 'fatih/vim-go'
+
+" Syntax checking
+Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -49,6 +52,8 @@ set autowrite       "Save file when building it
 
 set pastetoggle=<F2>
 
+let g:neocomplete#enable_at_startup = 1 "Start neocomplete on startup
+
 "Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -77,5 +82,15 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 let g:go_list_type = "quickfix" "Only use one type of error list
 
-"???"
+" Remove search highlighting
 nmap <silent> ,/ :nohlsearch<CR>
+
+" Additional syntastic setting
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0 
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
