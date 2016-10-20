@@ -95,9 +95,14 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" Set python3 checking
+let g:syntastic_python_python_exec= 'usr/bin/python3'
+
 " Add c++11 support"
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = '-std=c++11'
+let g:syntastic_cpp_cpplint_exec = 'cpplint'
+let g:syntastic_cpp_checkers = ['gcc', 'cpplint']
 
 " Add one whitespace after comments of nerdcommenter
 let NERDSpaceDelims=1
