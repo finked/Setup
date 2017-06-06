@@ -18,6 +18,9 @@ Plug 'fatih/vim-go'
 " Syntax checking
 Plug 'scrooloose/syntastic'
 
+" Vim support
+Plug 'lervag/vimtex'
+
 call plug#end()
 
 set nocompatible
