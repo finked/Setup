@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Get cpu temperature with acpi
+echo `acpi -t | cut -c 16-17` °C
