@@ -21,6 +21,12 @@ Plug 'scrooloose/syntastic'
 " Vim support
 Plug 'lervag/vimtex'
 
+" Tree file system
+Plug 'scrooloose/nerdtree'
+
+" Add and remove brackets, ...
+Plug 'tpope/vim-surround'
+
 call plug#end()
 
 set nocompatible
@@ -68,6 +74,9 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
+"Nerdtree command"
+map <C-t> :NERDTreeToggle<CR>
+
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
@@ -97,7 +106,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0 
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
 " Set python3 checking
 let g:syntastic_python_python_exec= 'usr/bin/python3'
 
@@ -109,3 +117,16 @@ let g:syntastic_cpp_checkers = ['gcc', 'cpplint']
 
 " Add one whitespace after comments of nerdcommenter
 let NERDSpaceDelims=1
+
+" Autocompltion for vimlatex
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.tex =
+        \ '\v\\%('
+        \ . '\a*%(ref|cite)\a*%(\s*\[[^]]*\])?\s*\{[^{}]*'
+        \ . '|includegraphics%(\s*\[[^]]*\])?\s*\{[^{}]*'
+        \ . '|%(include|input)\s*\{[^{}]*'
+        \ . ')'
+
+autocmd vimenter * NERDTree
