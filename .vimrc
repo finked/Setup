@@ -27,6 +27,10 @@ Plug 'scrooloose/nerdtree'
 " Add and remove brackets, ...
 Plug 'tpope/vim-surround'
 
+" Add markdown plugins
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
 call plug#end()
 
 set nocompatible
@@ -130,3 +134,6 @@ let g:neocomplete#sources#omni#input_patterns.tex =
         \ . ')'
 
 autocmd vimenter * NERDTree
+
+" Remove foldng option for markdown files
+let g:vim_markdown_folding_disabled = 1
